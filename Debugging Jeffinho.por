@@ -11,26 +11,39 @@ programa
 	cadeia ataque_perdido = "nada"
 	funcao inicio()
 	{
-		//menu()
-		//contexto()
-		//selecao_personagem()
-		//contexto()
-		//combate_portugol()
+		menu()
+		contexto()
+		selecao_personagem()
+		contexto()
+		combate_portugol()
 		dialogo()
 	}
 	funcao menu()
 	{
 		cadeia iniciar
 
-		escreva("--Debugging Jeffinho--\nBem Vindo ao nosso jogo!\n")
-		escreva("Escreva [INICIAR] para começar o jogo, ou [OPCOES] para acessar as opções\nDigite aqui: ")
+		escreva("██████╗ ███████╗██████╗ ██╗   ██╗ ██████╗  ██████╗ ██╗███╗   ██╗ ██████╗          ██╗███████╗███████╗███████╗██╗███╗   ██╗██╗  ██╗ ██████╗ \n")
+		escreva("██╔══██╗██╔════╝██╔══██╗██║   ██║██╔════╝ ██╔════╝ ██║████╗  ██║██╔════╝          ██║██╔════╝██╔════╝██╔════╝██║████╗  ██║██║  ██║██╔═══██╗\n")
+		escreva("██║  ██║█████╗  ██████╔╝██║   ██║██║  ███╗██║  ███╗██║██╔██╗ ██║██║  ███╗         ██║█████╗  █████╗  █████╗  ██║██╔██╗ ██║███████║██║   ██║\n")
+		escreva("██║  ██║██╔══╝  ██╔══██╗██║   ██║██║   ██║██║   ██║██║██║╚██╗██║██║   ██║    ██   ██║██╔══╝  ██╔══╝  ██╔══╝  ██║██║╚██╗██║██╔══██║██║   ██║\n")
+		escreva("██████╔╝███████╗██████╔╝╚██████╔╝╚██████╔╝╚██████╔╝██║██║ ╚████║╚██████╔╝    ╚█████╔╝███████╗██║     ██║     ██║██║ ╚████║██║  ██║╚██████╔╝\n")
+		escreva("╚═════╝ ╚══════╝╚═════╝  ╚═════╝  ╚═════╝  ╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝      ╚════╝ ╚══════╝╚═╝     ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ \n")
+		escreva("\nBem vindo ao nosso jogo!")
+		escreva("\nEscreva [INICIAR] para começar o jogo, ou [OPCOES] para acessar as opções\nDigite aqui: ")
 		leia(iniciar)
 
-		se(iniciar == "iniciar" ou iniciar == "Iniciar"){
-			
-		}
-		se(iniciar == "opcoes" ou iniciar == "opções"){
+		enquanto(iniciar != "iniciar" ou iniciar != "INICIAR"){
+			se(iniciar == "iniciar" ou iniciar == "INICIAR"){
+				pare
+			}
+			senao se(iniciar == "opcoes" ou iniciar == "OPCOES"){
 			opcoes()
+			pare
+			}
+			senao{
+			escreva("\nPreciso de uma resposta válida!\nDigite aqui: ")
+			leia(iniciar)
+			}
 		}
 	}
 	funcao dificuldade()
@@ -38,11 +51,20 @@ programa
 		escreva("\nAgora escolha a dificuldade para seu jogo, escreva [JUNIOR] para um modo mais fácil ou [SENIOR] para um modo mais desafiador")
 		escreva("\nDigite aqui: ")
 		leia(dificuldade_jogo)
+		
+		enquanto(dificuldade_jogo != "junior" ou dificuldade_jogo != "JUNIOR" ou dificuldade_jogo != "senior" ou dificuldade_jogo != "SENIOR"){
 		se(dificuldade_jogo == "junior" ou dificuldade_jogo == "JUNIOR"){
 			escreva("\nPerfeito! Sua aventura começa agora!\n")
+			pare
 		}
 		senao se(dificuldade_jogo == "senior" ou dificuldade_jogo == "SENIOR"){
 			escreva("\nBoa sorte! Sua aventura começa agora!")
+			pare
+		}
+		senao{
+		escreva("\nPreciso de uma resposta válida!\nDigite aqui: ")
+		leia(dificuldade_jogo)
+		}
 		}
 	}
 	funcao opcoes()
@@ -166,16 +188,16 @@ programa
 		se(dificuldade_jogo == "junior"){
 			se(chance <= 6){
 				hp_vilao = hp_vilao - atk*2
-				escreva("\nVocê acertou o golpe crítico, a vida dele está em ", hp_vilao,"HP\n")
+				escreva("\nVocê acertou o golpe crítico, ",personagem,". A vida dele está em ", hp_vilao,"HP\n")
 			}
 			senao{
 				escreva("\nVish, você errou o golpe crítico.\n")
 			}
 		}
 		senao{
-			se(chance <= 4){
+			se(chance <= 3){
 				hp_vilao = hp_vilao - atk*2
-				escreva("\nVocê acertou o golpe crítico, a vida dele está em ", hp_vilao,"HP\n")
+				escreva("\nVocê acertou o golpe crítico, ",personagem,". A vida dele está em ", hp_vilao,"HP\n")
 			}
 			senao{
 				escreva("\nVish, você errou o golpe crítico.\n")
@@ -222,12 +244,12 @@ programa
 		}
 		limpa()
 		u.aguarde(1000)
-		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.")
+		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(2000)
 		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") 
 		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani.") 
 		escreva("\nTalvez você devesse tentar chegar até lá antes de Jeffinho e se fortalecer!") 
 		u.aguarde(3000)
-		escreva("\n",personagem,": Tudo bem, farei o possível.")
+		escreva("\n",personagem,": Tudo bem, farei o possível.\n")
 		enter()
 	}
 }
@@ -236,8 +258,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 7547; 
- * @DOBRAMENTO-CODIGO = [20, 47, 87, 52, 94, 160];
+ * @POSICAO-CURSOR = 5395; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
