@@ -11,12 +11,13 @@ programa
 	cadeia ataque_perdido = "nada"
 	funcao inicio()
 	{
-		menu()
-		contexto()
-		selecao_personagem()
-		contexto()
-		combate_portugol()
-		dialogo()
+		//menu()
+		//contexto()
+		//selecao_personagem()
+		//contexto()
+		//combate_portugol()
+		//dialogo()
+		dialogo_gym()
 	}
 	funcao menu()
 	{
@@ -246,11 +247,49 @@ programa
 		u.aguarde(1000)
 		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(2000)
 		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") 
-		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani.") 
+		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani e Serjão dos Foguetes.") 
 		escreva("\nTalvez você devesse tentar chegar até lá antes de Jeffinho e se fortalecer!") 
 		u.aguarde(3000)
 		escreva("\n",personagem,": Tudo bem, farei o possível.\n")
 		enter()
+	}
+	funcao dialogo_gym()
+	{
+		inteiro resposta
+		inteiro serjao_resposta
+		
+		limpa()
+		escreva("Você segue junto a Henrica numa longa viagem até a academia de Renato Cariani.\n") u.aguarde(3000)
+		escreva("Henrica Murakami: Parece que chegamos") u.aguarde(1000)
+		escreva(".")u.aguarde(500)
+		escreva(".")u.aguarde(500)
+		escreva(".\n")u.aguarde(500)
+		enter()
+
+		//foto da academia
+		escreva("Henrica Murakami: Tem muitas pessoas aqui, talvez seja difícil encontrar eles\n")
+		escreva("O que você prefere, digite [1] para procurar por Renato ou [2] para procurar por Serjão\nDigite aqui: ")
+		leia(resposta)
+
+		se(resposta == 2){
+			escreva("Você anda pela academia, vendo muitos refugiados da ciência.\n") u.aguarde(3000)
+			escreva("Você encontra Serjão.\n") u.aguarde(3000)
+			escreva(personagem, ": MESTRE SERJÃO!\n") u.aguarde(3000)
+			escreva("Serjão: Olá jovem, como se chama?\n") u.aguarde(3000)
+			escreva("Sou eu, Serjão, o ", personagem,"!\n") u.aguarde(3000)
+			escreva("Serjão: Bom, você já deve me conhecer. Ajudo as pessoas aqui a melhorarem seu ataque com poderosos códigos.\n") u.aguarde(3000)
+			escreva("Eu preciso do seu treinamento, sou o escolhido pela profecia para derrotar Jeffinho!\n") u.aguarde(3000)
+			escreva("OHH, estávemos te esperando! Precisamos treinar sua capacidade de raciocínio para derrotar Jeffinho!\n") u.aguarde(3000)
+			escreva("Você está pronto? [1] Vamos lá!  [2] Gostaria de treinar com Cariani, ando me sentindo um frango.\n") u.aguarde(3000)
+			leia(serjao_resposta)
+		}
+		se(resposta == 1){
+		escreva("Você parte em busca de Renato Cariani.") u.aguarde(3000)
+		escreva("Henrica Murakami: Renato, tenho um rapaz para você.\n") u.aguarde(3000)
+		escreva("Henrica Murakami: Ele é o herói que as profecias apontavam, mas precisa se fortalecer.\n") u.aguarde(3000)
+		escreva(personagem, ": Se me ajudar, posso derrotar Jeffinho.\n") u.aguarde(3000)
+		escreva("Renato: Eu não sei, você é muito frango.") u.aguarde(3000)
+		}
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -258,7 +297,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 5395; 
+ * @POSICAO-CURSOR = 10645; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
