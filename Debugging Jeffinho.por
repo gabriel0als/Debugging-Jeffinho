@@ -1,6 +1,7 @@
 programa
 {
 	inclua biblioteca Util --> u 
+	inclua biblioteca Texto --> txt
 	
 	real hp = 200.0
 	real atk = 0.0
@@ -17,7 +18,8 @@ programa
 		//contexto()
 		//combate_portugol()
 		//dialogo()
-		dialogo_gym()
+		//dialogo_gym()
+		serjao()
 	}
 	funcao menu()
 	{
@@ -77,41 +79,39 @@ programa
 	{
 		escreva("\n---[ESCOLHA DE PERSONAGEM]---\n")
 		escreva("\nLuis Faminto        Guilherme do Truco      Gabriel Gremista")
-		escreva("\nHP: 200             Hp: 120                 HP: 150")
+		escreva("\nHP: 200             HP: 120                 HP: 150")
 		escreva("\nATK: 15             ATK: 25                 ATK: 20\n")
 
 		escreva("\nEscolha com qual personagem deseja jogar, lembre-se essa escolha é permanente\nDigite aqui: ")
 		leia(personagem)
 
-		enquanto(dificuldade_jogo == "nenhuma"){
-		se(personagem == "luis faminto" ou personagem == "Luis Faminto"){
+		personagem = txt.caixa_alta(personagem)
+		
+		enquanto(personagem != "LUIS FAMINTO" e personagem != "GUILHERME DO TRUCO" e personagem != "GABRIEL GREMISTA"){
+			escreva("Escolha um personagem válido\nDigite novamente seu personagem aqui: ")
+			leia(personagem)
+			personagem = txt.caixa_alta(personagem)
+		}
+		se(personagem == "LUIS FAMINTO"){
 			escreva("A partir de agora seu nome é... Luis Faminto!\n")
 			hp = 200.0
 			atk = 15.0
 			ataque = "\nVocê arremessa uma coxinha de captury no oponente e acerta deixando ele na saudade!"
 			ataque_perdido = "\nVocê arremessa uma coxinha de captury no monstro e erra, desperdiçando todo o recheio!"
-			pare
 		}
-		se(personagem == "guilherme do truco" ou personagem == "Guilherme do Truco"){
+		senao se(personagem == "GUILHERME DO TRUCO"){
 			escreva("A partir de agora seu nome é... Guilherme do Truco!\n")
 			hp = 120.0
 			atk = 25.0
 			ataque = "\nVocê truca seu adversário.. Mata o GAAATOO!"
 			ataque_perdido = "\nVocê tenta passar um facão mas perde!"
-			pare
 		}
-		se(personagem == "gabriel gremista" ou personagem == "Gabriel Gremista"){
+		senao se(personagem == "GABRIEL GREMISTA"){
 			escreva("A partir de agora seu nome é... Gabriel Gremista!\n")
 			hp = 150.0
 			atk = 20.0
 			ataque = "\nO peso da camiseta tricolor derrubou seu oponente!"
 			ataque_perdido = "\nA segunda divisão voltou para te assombrar, você perdeu seu ataque!"
-			pare
-		}
-		senao{
-			escreva("Escolha um personagem válido\nDigite aqui: ")
-			leia(personagem)
-		}
 		}
 		enter()
 	}
@@ -291,13 +291,59 @@ programa
 		escreva("Renato: Eu não sei, você é muito frango.") u.aguarde(3000)
 		}
 	}
+	funcao serjao()
+	{
+		cadeia planetas[8] = {"MERCURIO", "VENUS", "TERRA", "MARTE", "JUPITER", "SATURNO", "URANO", "NETUNO"}
+		logico condicao = falso
+		cadeia resposta
+		inteiro chances = 10
+		inteiro acertos = 0
+		logico planetaEncontrado
+		
+ 
+		escreva("\nHora de começar o seu treinamento, jovem.\n")
+		escreva("Primeiro, vamos aos conhecimentos gerais, cite 3 planeta do sistema solar.")
+
+		enquanto(chances >= 0 ou acertos < 3)
+		{
+			planetaEncontrado = falso
+			escreva("\nDigite aqui: ")
+			leia(resposta)
+	
+			resposta = txt.caixa_alta(resposta)
+
+
+			para(inteiro j=0; j < 8; j++){
+				se(planetas[j] == resposta){
+					planetaEncontrado = verdadeiro
+				}
+			}
+			
+			chances--
+			
+			se(planetaEncontrado){
+					escreva("Essa você acertou! Você ainda tem ",chances," chances.")
+					acertos++
+			}senao {
+					escreva("Essa você errou! Você ainda tem ",chances," chances.")
+			}
+			
+		}
+
+		escreva("acertos: ", acertos)
+		
+	}
+	funcao cariani()
+	{
+		
+	}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 10645; 
+ * @POSICAO-CURSOR = 11786; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
