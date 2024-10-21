@@ -18,7 +18,7 @@ programa
 		//contexto()
 		//combate_portugol()
 		//dialogo()
-		//dialogo_gym()
+		//academia()
 		serjao()
 	}
 	funcao menu()
@@ -35,11 +35,11 @@ programa
 		escreva("\nEscreva [INICIAR] para começar o jogo, ou [OPCOES] para acessar as opções\nDigite aqui: ")
 		leia(iniciar)
 
-		enquanto(iniciar != "iniciar" ou iniciar != "INICIAR"){
+		enquanto(iniciar != "iniciar" ou iniciar != "INICIAR" ou iniciar != "Iniciar"){
 			se(iniciar == "iniciar" ou iniciar == "INICIAR"){
 				pare
 			}
-			senao se(iniciar == "opcoes" ou iniciar == "OPCOES"){
+			senao se(iniciar == "opcoes" ou iniciar == "OPCOES" ou iniciar != "Opcoes"){
 			opcoes()
 			pare
 			}
@@ -76,7 +76,8 @@ programa
 		enter()
 	}
 	funcao selecao_personagem()
-	{
+	{	
+		limpa()
 		escreva("\n---[ESCOLHA DE PERSONAGEM]---\n")
 		escreva("\nLuis Faminto        Guilherme do Truco      Gabriel Gremista")
 		escreva("\nHP: 200             HP: 120                 HP: 150")
@@ -128,10 +129,12 @@ programa
 	funcao contexto()
 	{
 		se(personagem == "ninguem"){
-		escreva("\nVocê acorda em mundo à beira de um colapso... ")
-		escreva("Onde máquinas virtuais estão tentando dominá-lo juntamente a um Mega Super Vilão.")
+		escreva("\nVocê acorda em mundo à beira de um colapso")
+		carregar()
+		escreva(" Onde máquinas virtuais estão tentando dominá-lo juntamente a um Mega Super Vilão.")
 		u.aguarde(3000)
 		escreva("\nEntão, lentamente você abre seus olhos, vendo em sua frente uma Bela Donzela Japonesa em perigo!\n")
+		u.aguarde(3000)
 		enter()
 		}
 
@@ -144,14 +147,16 @@ programa
 	}
 	funcao combate_portugol()
 	{
-		inteiro atacar = 0
+		inteiro atacar, sorteio_portugol = 0
 		hp_vilao = 150.0
 		real atk_portugol = 20.0
+		cadeia fala_portugol[3] = {"O programa Portugol te acerta com um código em PTBR, dá para acreditar?", 
+		"O programa Portugol adicionou a biblioteca: Funeral.", "O programa Portugol contra-ataca com seu poder mais temido. ERRO DE COMPILAÇÃO, LINHA 0"}
 		enter()
 		limpa()
 
 		escreva("\n--Combate iniciado--")
-		enquanto(hp_vilao != 0.0){
+		enquanto(hp_vilao != 0.0){ sorteio_portugol = u.sorteia(0, 2)
 			se(hp <= atk_portugol){
 				escreva("\nSua situação está crítica, ", personagem,". Então a Bela Donzela Japonesa profere um super golpe derrotando o programa.")
 				pare
@@ -165,15 +170,16 @@ programa
 				escreva("\nA vida do oponente está em ", hp_vilao,"HP\n")
 				enter()
 				hp = hp - atk_portugol
-				escreva("\nO programa Portugol te acerta com um código em PTBR, dá para acreditar?")
+				escreva("\nPortugol: Agora é a minha vez... ")
+				escreva(fala_portugol[sorteio_portugol])
 				escreva("\nSua vida agora está em ", hp, "HP\n")
 			}
 			senao se(atacar == 2){
 				danocritico()
 				enter()
-				escreva("\nPortugol: Agora é a minha vez...")
+				escreva("\nPortugol: Agora é a minha vez... ")
 				hp = hp - atk_portugol
-				escreva("\nO programa Portugol te acerta com um código em PTBR, dá para acreditar?")
+				escreva(fala_portugol[sorteio_portugol])
 				escreva("\nSua vida agora está em ", hp, "HP\n")
 			}
 			senao{
@@ -230,10 +236,9 @@ programa
 				u.aguarde(3000)
 				escreva(personagem, ": Mas qual o motivo de toda essa destruição?\n")
 				u.aguarde(3000)
-				escreva(nome_dela, ": O motivo?.. Ele se chama Jefferson De Oliveira Chaves.. Mais conhecido como Jeffinho dos compiuter.\n")
-				escreva("Ele era um dos melhores professores de programação, ensinava seus alunos bem.. até que o java script o corrompeu!\n")
-				escreva("Ele está tentando dominar o mundo inteiro para fazer todos programarem em java, já pensou o horror?\n")
-				u.aguarde(5000)
+				escreva(nome_dela, ": O motivo?.. Ele se chama Jefferson De Oliveira Chaves.. Mais conhecido como Jeffinho dos compiuter.\n") u.aguarde(3000)
+				escreva("Ele era um dos melhores professores de programação, ensinava seus alunos bem.. até que o java script o corrompeu!\n") u.aguarde(3000)
+				escreva("Ele está tentando dominar o mundo inteiro para fazer todos programarem em java, já pensou o horror?\n") u.aguarde(4000)
 			}
 			senao se(pergunta == 1){
 				escreva("\n",nome_dela, ": Eu me chamo Henrica Murakami, eu era apenas uma feliz programadora de Scratch, até o reinado de Jeffinho começar...\n")
@@ -245,95 +250,198 @@ programa
 		}
 		limpa()
 		u.aguarde(1000)
-		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(2000)
-		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") 
-		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani e Serjão dos Foguetes.") 
-		escreva("\nTalvez você devesse tentar chegar até lá antes de Jeffinho e se fortalecer!") 
+		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(3000)
+		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") u.aguarde(3000)
+		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani e Serjão dos Foguetes.") u.aguarde(3000)
+		escreva("\nTalvez você devesse tentar chegar até lá antes de Jeffinho e se fortalecer!") u.aguarde(3000)
 		u.aguarde(3000)
 		escreva("\n",personagem,": Tudo bem, farei o possível.\n")
 		enter()
 	}
-	funcao dialogo_gym()
+	funcao academia()
 	{
-		inteiro resposta
-		inteiro serjao_resposta
+		inteiro resposta, resposta_serjao, resposta_cariani
 		
 		limpa()
 		escreva("Você segue junto a Henrica numa longa viagem até a academia de Renato Cariani.\n") u.aguarde(3000)
 		escreva("Henrica Murakami: Parece que chegamos") u.aguarde(1000)
-		escreva(".")u.aguarde(500)
-		escreva(".")u.aguarde(500)
-		escreva(".\n")u.aguarde(500)
+		carregar()
+		escreva("\n")
 		enter()
 
 		//foto da academia
-		escreva("Henrica Murakami: Tem muitas pessoas aqui, talvez seja difícil encontrar eles\n")
-		escreva("O que você prefere, digite [1] para procurar por Renato ou [2] para procurar por Serjão\nDigite aqui: ")
+		escreva("Henrica Murakami: Tem muitas pessoas aqui, talvez seja difícil encontrar eles\n") u.aguarde(3000)
+		escreva("O que você prefere, digite [1] para procurar por Renato ou [2] para procurar por Serjão\n")
+		escreva("\n\\\\\\\\ Treino com Renato Cariani HP++ /////\n")
+		escreva("\\\\\\\\     Treino com Serjão ATK++    ////\n\nDigite aqui: ")
 		leia(resposta)
 
-		se(resposta == 2){
-			escreva("Você anda pela academia, vendo muitos refugiados da ciência.\n") u.aguarde(3000)
-			escreva("Você encontra Serjão.\n") u.aguarde(3000)
-			escreva(personagem, ": MESTRE SERJÃO!\n") u.aguarde(3000)
-			escreva("Serjão: Olá jovem, como se chama?\n") u.aguarde(3000)
-			escreva("Sou eu, Serjão, o ", personagem,"!\n") u.aguarde(3000)
-			escreva("Serjão: Bom, você já deve me conhecer. Ajudo as pessoas aqui a melhorarem seu ataque com poderosos códigos.\n") u.aguarde(3000)
-			escreva("Eu preciso do seu treinamento, sou o escolhido pela profecia para derrotar Jeffinho!\n") u.aguarde(3000)
-			escreva("OHH, estávemos te esperando! Precisamos treinar sua capacidade de raciocínio para derrotar Jeffinho!\n") u.aguarde(3000)
-			escreva("Você está pronto? [1] Vamos lá!  [2] Gostaria de treinar com Cariani, ando me sentindo um frango.\n") u.aguarde(3000)
-			leia(serjao_resposta)
+		enquanto(resposta != 1 e resposta != 2){
+			escreva("Informe uma opção válida\nDigite aqui: ")
+			leia(resposta)
 		}
-		se(resposta == 1){
-		escreva("Você parte em busca de Renato Cariani.") u.aguarde(3000)
-		escreva("Henrica Murakami: Renato, tenho um rapaz para você.\n") u.aguarde(3000)
-		escreva("Henrica Murakami: Ele é o herói que as profecias apontavam, mas precisa se fortalecer.\n") u.aguarde(3000)
-		escreva(personagem, ": Se me ajudar, posso derrotar Jeffinho.\n") u.aguarde(3000)
-		escreva("Renato: Eu não sei, você é muito frango.") u.aguarde(3000)
+		
+		se(resposta == 2){ limpa()
+			escreva("Você anda pela academia, vendo muitos refugiados da ciência.\n") 
+			u.aguarde(3000)
+			escreva("Você encontra Serjão.\n") 
+			u.aguarde(3000)
+			escreva(personagem, ": MESTRE SERJÃO!\n") 
+			u.aguarde(3000)
+			escreva("Serjão: Olá jovem, como se chama?\n") 
+			u.aguarde(3000)
+			escreva(personagem, ": Sou eu, Serjão, o ", personagem,"!\n") 
+			u.aguarde(3000)
+			escreva("Serjão: Bom, você já deve me conhecer. Aqui ajudo as pessoas a melhorarem seu ataque com poderosos códigos.\n") 
+			u.aguarde(3000)
+			escreva(personagem,": Eu preciso do seu treinamento, sou o escolhido pela profecia para derrotar Jeffinho!\n") 
+			u.aguarde(3000)
+			escreva("Serjão: OHH, estávamos te esperando! Precisamos treinar sua capacidade de raciocínio para derrotar Jeffinho!\n")
+			u.aguarde(3000)
+			escreva("Você está pronto?   [1] Vamos lá!    [2] Gostaria de treinar com Cariani, ando me sentindo um frango.\nDigite aqui: ") 
+			leia(resposta_serjao) u.aguarde(1000)
+
+			se(resposta_serjao == 1){
+			serjao()
+			}
+			se(resposta_serjao == 2){
+			escreva("\nSerjão: Eu iria te fazer desenvolver um foguete, escolheu bem jovem.\n")
+			escreva("Você vai até Renato para o treinamento.") u.aguarde(2000)
+			cariani()
+			} senao{
+				escreva("Informe uma opção válida\nDigite aqui: ")
+				leia(resposta_serjao)
+			}
 		}
+		se(resposta == 1){ limpa()
+			escreva("Você parte em busca de Renato Cariani.\n") 
+			u.aguarde(3000)
+			escreva("Henrica o avistou.\n") 
+			u.aguarde(3000)
+			escreva("Henrica Murakami: Renato, tenho um rapaz para você.\n") 
+			u.aguarde(3000)
+			escreva("Henrica Murakami: Ele é o herói que as profecias apontavam, mas precisa se fortalecer.\n") 
+			u.aguarde(3000)
+			escreva(personagem, ": Se me ajudar, posso derrotar Jeffinho.\n") 
+			u.aguarde(3000)
+			escreva("Renato: Eu não sei, você é muito frango.\n") 
+			u.aguarde(3000)
+			escreva("\n[1] Frango eu? para mim frango é você!      [2] Quer saber, prefiro treinar com Serjão\nDigite aqui: ")
+			leia(resposta_cariani) u.aguarde(1000)
+		
+			se(resposta_cariani == 1){
+			cariani()
+			}
+			se(resposta_cariani == 2){
+			escreva("\nPor isso você não cresce!\n") u.aguarde(2000)
+			escreva("Você vai até Serjão para o treinamento.") u.aguarde(2000)
+			serjao()
+			} senao{
+				escreva("Informe uma opção válida\nDigite aqui: ")
+				leia(resposta_cariani)
+			}
+		}
+	}
+	funcao cariani()
+	{
+		
 	}
 	funcao serjao()
 	{
 		cadeia planetas[8] = {"MERCURIO", "VENUS", "TERRA", "MARTE", "JUPITER", "SATURNO", "URANO", "NETUNO"}
-		logico condicao = falso
 		cadeia resposta
 		inteiro chances = 10
-		inteiro acertos = 0
+		inteiro acertos = 0, resposta2= 0
 		logico planetaEncontrado
-		
- 
-		escreva("\nHora de começar o seu treinamento, jovem.\n")
-		escreva("Primeiro, vamos aos conhecimentos gerais, cite 3 planeta do sistema solar.")
 
-		enquanto(chances >= 0 ou acertos < 3)
+		limpa()
+		escreva("Hora de começar o seu treinamento, jovem.\n") u.aguarde(2000)
+		escreva("Primeiro, vamos aos conhecimentos gerais. Você tem 10 chances, cite 5 planeta do sistema solar.")
+
+		enquanto(chances != 0)
 		{
 			planetaEncontrado = falso
+
 			escreva("\nDigite aqui: ")
 			leia(resposta)
 	
 			resposta = txt.caixa_alta(resposta)
-
 
 			para(inteiro j=0; j < 8; j++){
 				se(planetas[j] == resposta){
 					planetaEncontrado = verdadeiro
 				}
 			}
-			
 			chances--
-			
-			se(planetaEncontrado){
-					escreva("Essa você acertou! Você ainda tem ",chances," chances.")
-					acertos++
-			}senao {
-					escreva("Essa você errou! Você ainda tem ",chances," chances.")
+			se(planetaEncontrado){ acertos++
+				se(acertos == 5){
+				chances = 0
+				}
+				senao{
+					escreva("Serjão: Essa você acertou! Você ainda tem ",chances," chances.")
+				}
 			}
+			se(nao planetaEncontrado){
+					escreva("Serjão: Essa você errou! Você ainda tem ",chances," chances.")
+			}
+		}
+		se(acertos == 5){ 
+			u.aguarde(1000)
+			limpa()
+			carregar()
+			limpa()
+			u.aguarde(1000)
+			escreva("Serjão: Está quase no meu nível, jovem.\n")
+		}
+		senao{
+			u.aguarde(1000)
+			limpa()
+			carregar()
+			limpa()
+			u.aguarde(1000)
+			escreva("Serjão: Você faltou algumas aulas de ciência, não é?\n") u.aguarde(3000)
+		}
+		enter()
+		escreva("\nSerjão: Agora vamos à próxima, essa é para não zerar hein.") 
+		u.aguarde(3000)
+		escreva("\nSerjão: Vamos testar seu raciocínio. Tenho um paradoxo para você.\n")
+		u.aguarde(3000)
+		escreva("Serjão: Imagine três portas, atrás de uma existe um prêmio e, atrás das outras duas não existe nada.\n")
+		u.aguarde(4000)
+		escreva("Serjão: Primeiro você escolhe uma porta, mas sem abri-la. Após isso uma outra porta é aberta e é revelado que não contém nada.\n")
+		u.aguarde(5000)
+		escreva("Serjão: Agora tem uma opção, abrir a última porta restante, ou abrir a que você escolheu inicialmente?") 
+		escreva("\n            [1] Abrir a primeira porta        [2] Trocar de porta       \nDigite aqui: ")
+		leia(resposta2)
+		
+		enquanto(resposta2 != 1 e resposta2 != 2){
+			escreva("\nInforme uma opção válida.\nDigite aqui: ")
+			leia(resposta2)
+		} 
+		se(resposta2 == 1){
+			limpa()
+			carregar()
+			limpa()
+			escreva("\nSerjão: Você não encontrou o prêmio. Essa é difícil mesmo, jovem.")
 			
 		}
-
-		escreva("acertos: ", acertos)
-		
+		se(resposta2 == 2){
+			limpa()
+			carregar()
+			limpa()
+			escreva("\nSerjão: Fale a verdade, você já conhecia essa não é, jovem?")
+			acertos = acertos + 1
+		}
 	}
-	funcao cariani()
+	funcao carregar()
+	{
+		para(inteiro i=0; i < 3; i++){
+			escreva(".")
+			u.aguarde(500)
+		} 
+		u.aguarde(1000)
+	}
+	funcao perguntafinal()
 	{
 		
 	}
@@ -343,9 +451,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 11786; 
+ * @POSICAO-CURSOR = 15427; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {chances, 353, 10, 7}-{acertos, 354, 10, 7};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
