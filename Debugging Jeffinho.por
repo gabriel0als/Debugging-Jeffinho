@@ -12,13 +12,13 @@ programa
 	cadeia ataque_perdido = "nada"
 	funcao inicio()
 	{
-		//menu()
-		//contexto()
-		//selecao_personagem()
-		//contexto()
-		//combate_portugol()
-		//dialogo()
-		//academia()
+		menu()
+		contexto()
+		selecao_personagem()
+		contexto()
+		combate_portugol()
+		dialogo()
+		academia()
 		cariani()
 	}
 	funcao menu()
@@ -35,19 +35,17 @@ programa
 		escreva("\nEscreva [INICIAR] para começar o jogo, ou [OPCOES] para acessar as opções\nDigite aqui: ")
 		leia(iniciar)
 
-		enquanto(iniciar != "iniciar" ou iniciar != "INICIAR" ou iniciar != "Iniciar"){
-			se(iniciar == "iniciar" ou iniciar == "INICIAR"){
-				pare
-			}
-			senao se(iniciar == "opcoes" ou iniciar == "OPCOES" ou iniciar != "Opcoes"){
-			opcoes()
-			pare
-			}
-			senao{
+		iniciar = txt.caixa_alta(iniciar)
+
+		enquanto(iniciar != "INICIAR" e iniciar != "OPCOES"){
 			escreva("\nPreciso de uma resposta válida!\nDigite aqui: ")
 			leia(iniciar)
-			}
 		}
+		se(iniciar == "INICIAR"){
+		}
+		se(iniciar == "OPCOES"){
+			opcoes()
+			}
 	}
 	funcao dificuldade()
 	{
@@ -269,7 +267,34 @@ programa
 		escreva("\n")
 		enter()
 
-		//foto da academia
+          escreva("                                                     ___\n")
+    		escreva("                                             ___..--'  .`.\n")
+    		escreva("                                    ___...--'     -  .` `.`.\n")
+    		escreva("                           ___...--' _      -  _   .` -   `.`.\n")
+    		escreva("                  ___...--'  -       _   -       .`  `. - _ `.`.\n")
+    		escreva("           __..--'_______________ -         _  .`  _   `.   - `.`.\n")
+    		escreva("        .`    _ /\\    -        .`      _     .`__________`. _  -`.`.\n")
+   		escreva("      .` -   _ /  \\_     -   .`  _         .` |Academia do|`.   - `.`.\n")
+    		escreva("    .`-    _  /   /\\   -   .`        _   .`   |__Cariani__|  `. _   `.`.\n")
+    		escreva("  .`________ /__ /_ \\____.`____________.`     ___       ___  - `._____`|\n")
+    		escreva("    |   -  __  -|    | - |  ____  |   | | _  |   |  _  |   |  _ |\n")
+    		escreva("    | _   |  |  | -  |   | |.--.| |___| |    |___|     |___|    |\n")
+    		escreva("    |     |--|  |    | _ | |'--'| |---| |   _|---|     |---|_   |\n")
+    		escreva("    |   - |__| _|  - |   | |.--.| |   | |    |   |_  _ |   |    |\n")
+    		escreva(" ---``--._      |    |   |=|'--'|=|___|=|====|___|=====|___|====|\n")
+    		escreva(" -- . ''  ``--._| _  |  -|_|.--.|_______|_______________________|\n")
+    		escreva("`--._           '--- |_  |:|'--'|:::::::|:::::::::::::::::::::::|\n")
+    		escreva("_____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|\n")
+    		escreva("----------`--._          ''      ``--.._|:::::::::::::::::::::::|\n")
+    		escreva("`--._ _________`--._'        --     .   ''-----.................'\n")
+    		escreva("     `--._----------`--._.  _           -- . :''           -    ''\n")
+    		escreva("          `--._ _________`--._ :'              -- . :''      -- . ''\n")
+    		escreva(" -- . ''       `--._ ---------`--._   -- . :''\n")
+    		escreva("          :'        `--._ _________`--._:'  -- . ''      -- . ''   \n")
+
+          u.aguarde(4000)
+          limpa()
+          
 		escreva("Henrica Murakami: Tem muitas pessoas aqui, talvez seja difícil encontrar eles\n") u.aguarde(3000)
 		escreva("O que você prefere, digite [1] para procurar por Renato ou [2] para procurar por Serjão\n")
 		escreva("\n\\\\\\\\ Treino com Renato Cariani HP++ /////\n")
@@ -477,7 +502,8 @@ programa
 			u.aguarde(2000)
 			escreva("\nRenato: parece que não conseguimos tirar total proveito do seu potencial.")
 		}
-		
+		u.aguarde(2000)
+		escreva("\nRenato: Bom, essa máquina não é nada comparado a pergunta final. Vamos lá")
 	}
 	funcao serjao()
 	{
@@ -546,6 +572,7 @@ programa
 		escreva("Serjão: Agora tem uma opção, abrir a última porta restante, ou abrir a que você escolheu inicialmente?") 
 		escreva("\n            [1] Abrir a primeira porta        [2] Trocar de porta       \nDigite aqui: ")
 		leia(resposta2)
+
 		
 		enquanto(resposta2 != 1 e resposta2 != 2){
 			escreva("\nInforme uma opção válida.\nDigite aqui: ")
@@ -565,6 +592,10 @@ programa
 			escreva("\nSerjão: Fale a verdade, você já conhecia essa não é, jovem?")
 			acertos = acertos + 1
 		}
+		u.aguarde(2000)
+		limpa()
+		
+		
 	}
 	funcao carregar()
 	{
@@ -574,17 +605,13 @@ programa
 		} 
 		u.aguarde(1000)
 	}
-	funcao perguntafinal()
-	{
-		
-	}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 17037; 
+ * @POSICAO-CURSOR = 21630; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
