@@ -19,7 +19,7 @@ programa
 		//combate_portugol()
 		//dialogo()
 		//academia()
-		serjao()
+		cariani()
 	}
 	funcao menu()
 	{
@@ -301,6 +301,10 @@ programa
 			escreva("Você está pronto?   [1] Vamos lá!    [2] Gostaria de treinar com Cariani, ando me sentindo um frango.\nDigite aqui: ") 
 			leia(resposta_serjao) u.aguarde(1000)
 
+			enquanto(resposta_serjao < 1 ou resposta_serjao > 2){
+				escreva("Informe uma opção válida\nDigite aqui: ")
+				leia(resposta_serjao)
+			}
 			se(resposta_serjao == 1){
 			serjao()
 			}
@@ -308,9 +312,6 @@ programa
 			escreva("\nSerjão: Eu iria te fazer desenvolver um foguete, escolheu bem jovem.\n")
 			escreva("Você vai até Renato para o treinamento.") u.aguarde(2000)
 			cariani()
-			} senao{
-				escreva("Informe uma opção válida\nDigite aqui: ")
-				leia(resposta_serjao)
 			}
 		}
 		se(resposta == 1){ limpa()
@@ -329,6 +330,10 @@ programa
 			escreva("\n[1] Frango eu? para mim frango é você!      [2] Quer saber, prefiro treinar com Serjão\nDigite aqui: ")
 			leia(resposta_cariani) u.aguarde(1000)
 		
+			enquanto(resposta_cariani < 1 e resposta_cariani > 2){
+				escreva("Informe uma opção válida\nDigite aqui: ")
+				leia(resposta_cariani)
+			}
 			se(resposta_cariani == 1){
 			cariani()
 			}
@@ -336,14 +341,142 @@ programa
 			escreva("\nPor isso você não cresce!\n") u.aguarde(2000)
 			escreva("Você vai até Serjão para o treinamento.") u.aguarde(2000)
 			serjao()
-			} senao{
-				escreva("Informe uma opção válida\nDigite aqui: ")
-				leia(resposta_cariani)
 			}
 		}
 	}
 	funcao cariani()
-	{
+	{	
+		inteiro chances = 5
+		inteiro acertos = 0
+		inteiro resposta
+
+		cadeia perguntas[5] = {"Quem é o melhor? [1] Julio Balestrin    [2] Renato Cariani", 
+		"Aceita uma coquinha gelada?      [1] Sim, por favor    [2] Não estou afim",
+		"Qual a melhor música para ouvir treinando?      [1] Princesa Sofia ou Moranguinho no fone       [2] Música da academia",
+		"O que vale mais a pena?       [1] Ser natural       [2] Se render ao suco",
+		"Qual o melhor dia para começar a cuidar da sua saúde?       [1] Quando for tarde demais     [2] Hoje mesmo"}
+
+		inteiro respostas[5] = {2, 2, 1, 1, 2}
+		
+		limpa()
+		
+		escreva("Renato: Então você quer ficar mais forte, não é?") 
+		u.aguarde(2000)
+		escreva("\nRenato: Primeiro, temos que fortalecer sua musculatura.")
+		u.aguarde(2000)
+		escreva("\nRenato: Irei te fazer 5 perguntas, cada resposta correta o peso fica mais leve. Tente acertar 3 para completar a série.")
+		u.aguarde(3000)
+
+			escreva("\nAqui vai a primeira, quem é o melhor?\n [1] Julio Balestrin    [2] Renato Cariani\nDigite aqui: ")
+			leia(resposta)
+			
+			se(resposta != 1 e resposta != 2){
+				escreva("\nInforme uma opção válida\nDigite aqui: ")
+				leia(resposta)
+			}
+			se(resposta == 1){
+				escreva("\nRenato: Está de brincadeira comigo?")
+				resposta = 0
+			}
+			se(resposta == 2){
+				escreva("\nRenato: Ótimo ouvir isso, a máquina está mais leve.")
+				acertos++
+				resposta = 0
+			}
+		
+			u.aguarde(2000)
+		
+			escreva("\n\nVamos à segunda pergunta, quer uma coquinha gelada?\n      [1] Sim, por favor    [2] Não estou afim\nDigite aqui: ")
+			leia(resposta)
+		
+			se(resposta != 1 e resposta != 2){
+				escreva("\nInforme uma opção válida\nDigite aqui: ")
+				leia(resposta)
+			} 
+			se(resposta == 1){
+				escreva("\nRenato: Hoje é quinta, dia do lixo só aos sábados. Mais peso na máquina.")
+				resposta = 0
+			}
+			se(resposta == 2){
+				escreva("\nRenato: Bom que recusou, eu queria tomar sozinho. Máquina está mais leve. ")
+				acertos++
+				resposta = 0
+			}
+		
+			u.aguarde(2000)
+		
+			escreva("\n\nHora da terceira pergunta, qual a melhor música para ouvir treinando?\n")
+			escreva("     [1] Princesa Sofia ou Moranguinho no fone       [2] Música da academia  \nDigite aqui: ")
+			leia(resposta)
+
+			se(resposta != 1 e resposta != 2){
+				escreva("\nInforme uma opção válida\nDigite aqui: ")
+				leia(resposta)
+			} 
+			se(resposta == 1){
+				escreva("\nRenato: Não tem como não é, são as melhores. Máquina mais leve.")
+				acertos++
+				resposta = 0
+			}
+			se(resposta == 2){
+				escreva("\nRenato: Não posso me incoformar que essa é a sua opinião. Máquina mais pesada.")
+				resposta = 0
+			}
+
+			u.aguarde(2000)
+
+			escreva("\n\nQuarta pergunta, estamos quase no fim. O que vale mais a pena?")
+			escreva("     [1] Ser natural       [2] Se render ao suco  \nDigite aqui: ")
+			leia(resposta)
+		
+			se(resposta != 1 e resposta != 2){
+				escreva("\nInforme uma opção válida\nDigite aqui: ")
+				leia(resposta)
+			} 
+			se(resposta == 1){
+				escreva("\nRenato: Seja natural, cuide do seu corpo. Máquina mais leve.")
+				acertos++
+				resposta = 0
+			}
+			se(resposta == 2){
+				escreva("\nRenato: Não é o que voce precisa, jovem. Acredite.")
+				resposta = 0
+			}
+
+			u.aguarde(2000)
+
+			escreva("\n\nÚltima pergunta, qual o melhor dia para começar a cuidar da sua saúde?")
+			escreva("\n      [1] Quando for tarde demais     [2] Hoje mesmo   \nDigite aqui: ")
+			leia(resposta)
+
+			se(resposta != 1 e resposta != 2){
+				escreva("\nInforme uma opção válida\nDigite aqui: ")
+				leia(resposta)
+			} 
+			se(resposta == 1){
+				escreva("\nRenato: Sabe que não é a resposta correta certo? Máquina mais pesada")
+				resposta = 0
+			}
+			se(resposta == 2){
+				escreva("\nRenato: Mais certo impossível.")
+				resposta = 0
+				acertos++
+			}
+		se(acertos >= 3){
+			u.aguarde(3000)
+			limpa()
+			carregar()
+			limpa()
+			escreva("\nRenato: Você zerou a máquina! Está preparado para a o exercício final.")
+		} senao{
+			u.aguarde(3000)
+			limpa()
+			carregar()
+			limpa()
+			escreva("\nVocê falhou na máquina.")
+			u.aguarde(2000)
+			escreva("\nRenato: parece que não conseguimos tirar total proveito do seu potencial.")
+		}
 		
 	}
 	funcao serjao()
@@ -451,9 +584,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 15427; 
+ * @POSICAO-CURSOR = 17037; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {chances, 353, 10, 7}-{acertos, 354, 10, 7};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
