@@ -10,16 +10,18 @@ programa
 	real hp_vilao = 100.0
 	cadeia ataque = "nada"
 	cadeia ataque_perdido = "nada"
+	cadeia arma
+	
 	funcao inicio()
 	{
-		menu()
-		contexto()
-		selecao_personagem()
-		contexto()
-		combate_portugol()
-		dialogo()
-		academia()
-		cariani()
+		//menu()
+		//contexto()
+		//selecao_personagem()
+		//contexto()
+		//combate_portugol()
+		//dialogo()
+		//academia()
+		jeffinho()
 	}
 	funcao menu()
 	{
@@ -487,23 +489,69 @@ programa
 				resposta = 0
 				acertos++
 			}
-		se(acertos >= 3){
-			u.aguarde(3000)
-			limpa()
-			carregar()
-			limpa()
-			escreva("\nRenato: Você zerou a máquina! Está preparado para a o exercício final.")
-		} senao{
-			u.aguarde(3000)
-			limpa()
-			carregar()
-			limpa()
+		u.aguarde(3000)
+		limpa()
+		carregar()
+		limpa()
+		
+		se(acertos == 5){
+			hp = hp + 30
+			escreva("Renato: Você zerou a máquina! Um verdadeiro monstro. Seu HP subiu +30 pontos.\n")
+			enter()
+		}
+		se(acertos >= 3 e acertos < 5){
+			hp = hp + 20
+			escreva("Renato: Você venceu a máquina! Foi graduado de frango para avestruz. Seu HP subiu +20 pontos.\n")
+			enter()
+		}
+		se(acertos < 3){
+			hp = hp + 10
 			escreva("\nVocê falhou na máquina.")
 			u.aguarde(2000)
-			escreva("\nRenato: parece que não conseguimos tirar total proveito do seu potencial.")
+			escreva("Renato: Não extraímos total proveito do seu potencial, porém mesmo assim seu HP subiu +10 pontos.\n")
+			enter()
 		}
+		
+		u.aguarde(1000)
+		limpa()
+		carregar()
+		limpa()
+
+		escreva("Renato: Escute garoto, acredito que era isso era tudo que eu poderia te ensinar.")
 		u.aguarde(2000)
-		escreva("\nRenato: Bom, essa máquina não é nada comparado a pergunta final. Vamos lá")
+		escreva("\n", personagem,": Sério? Acredita que estou mais forte agora?")
+		u.aguarde(2000)
+		escreva("\nRenato: Pode apostar que está.")
+		u.aguarde(2000)
+		escreva("\nRenato: Porém, antes de partir")
+		carregar()
+		escreva(" Tenho um presente para você.")
+
+		u.aguarde(1000)
+		escreva("\n\n ~~~ NOVO ITEM ADICIONADO - Scratch Shield ~~~\n\n")
+		u.aguarde(1000)
+		escreva("  |`-._/\\_.-`|\n")
+		escreva("  |    ||    |\n")
+		escreva("  |___o()o___|\n")
+		escreva("  |__((<>))__|\n")
+		escreva("  \\   o\\/o   /\n")
+		escreva("   \\   ||   /\n")
+		escreva("    \\  ||  /\n")
+		escreva("     '.||.'\n")
+		escreva("       ``\n")
+		u.aguarde(3000)
+
+		arma = "Scratch Shield"
+
+		escreva("\n\n", personagem,": Nossa, o que é isso Renato?")
+		u.aguarde(2000)
+		escreva("\nRenato: Isso é uma relíquia, jovem. Dos bons tempos de Scrath nessa terra.")
+		u.aguarde(4000)
+		escreva("\nRenato: Você poderá usá-lo 3 vezes durante a batalha, o dano de ataque adversário será menor.")
+		u.aguarde(4000)
+		escreva("\nRenato: Isso é tudo. Agora resta apenas desejar boa sorte em sua missão. Desça a mão nele!\n")
+		enter()
+		
 	}
 	funcao serjao()
 	{
@@ -566,7 +614,7 @@ programa
 		escreva("\nSerjão: Vamos testar seu raciocínio. Tenho um paradoxo para você.\n")
 		u.aguarde(3000)
 		escreva("Serjão: Imagine três portas, atrás de uma existe um prêmio e, atrás das outras duas não existe nada.\n")
-		u.aguarde(4000)
+		u.aguarde(5000)
 		escreva("Serjão: Primeiro você escolhe uma porta, mas sem abri-la. Após isso uma outra porta é aberta e é revelado que não contém nada.\n")
 		u.aguarde(5000)
 		escreva("Serjão: Agora tem uma opção, abrir a última porta restante, ou abrir a que você escolheu inicialmente?") 
@@ -582,20 +630,68 @@ programa
 			limpa()
 			carregar()
 			limpa()
-			escreva("\nSerjão: Você não encontrou o prêmio. Essa é difícil mesmo, jovem.")
+			escreva("Serjão: Você não encontrou o prêmio. Essa é difícil mesmo, jovem.")
 			
 		}
 		se(resposta2 == 2){
 			limpa()
 			carregar()
 			limpa()
-			escreva("\nSerjão: Fale a verdade, você já conhecia essa não é, jovem?")
+			escreva("Serjão: Fale a verdade, você já conhecia essa não é, jovem?")
 			acertos = acertos + 1
 		}
 		u.aguarde(2000)
 		limpa()
+		carregar()
+		limpa()
+
+		se(acertos < 3){
+			atk = atk + 10
+			escreva("\nSerjão: Você teve um desempenho um pouco abaixo, porém mesmo assim seu ataque subiu +10 pontos")
+			enter()
+		}
+		se(acertos >= 3 e acertos < 6){
+			atk = atk + 20
+			escreva("\nSerjão: Você teve um bom desempenho no treinamento, seu ataque subiu +20 pontos")
+			enter()
+		}
+		se(acertos == 6){
+			atk = atk + 30
+			escreva("\nSerjão: Uau, jovem. Você maximizou seu treinamento, seu atauque subiu +30 pontos")
+			enter()
+		}
+		u.aguarde(1000)
+		limpa()
+		carregar()
+		limpa()
+
 		
-		
+		escreva("Serjão: Bom, acho que este é o fim do seu treinamento, ", personagem,".")
+		u.aguarde(3000)
+		escreva("\n",personagem,": Sério? Acredita que estou mais forte agora?")
+		u.aguarde(3000)
+		escreva("\nSerjão: É claro, jovem.")
+		u.aguarde(2000)
+		escreva("\nSerjão: Mas escute")
+		carregar()
+		escreva(" Tenho um presente para você.")
+
+		u.aguarde(1000)
+		escreva("\n\n ~~~ NOVO ITEM ADICIONADO - Scratch Sword ~~~")
+		u.aguarde(1000)
+		escreva("\n\no()xxxx[{::::::::::::::::::::::::::::::::::>")
+		escreva(3000)
+
+		arma = "Scratch Sword"
+
+		escreva("\n\n", personagem,": Nossa, o que é isso Serjão?")
+		u.aguarde(3000)
+		escreva("\nSerjão: Isso é uma relíquia, jovem. Dos bons tempos de Scrath nessa terra.")
+		u.aguarde(4000)
+		escreva("\nSerjão: Você poderá usá-la 3 vezes durante a batalha, seu dano será maior.")
+		u.aguarde(4000)
+		escreva("\nSerjão: Isso é tudo. Agora resta apenas desejar boa sorte em sua missão. Vá e derrote Jeffinho, jovem.\n")
+		enter()
 	}
 	funcao carregar()
 	{
@@ -605,13 +701,121 @@ programa
 		} 
 		u.aguarde(1000)
 	}
+	funcao jeffinho()
+	{
+		inteiro resposta
+
+		limpa()
+		carregar()
+		limpa()
+
+		escreva("Você e Henrica partem em direção ao castelo de Jeffinho.")
+		u.aguarde(3000)
+		limpa()
+		carregar()
+		limpa()
+
+		escreva("Vocês finalmente chegaram.\n\n")
+		u.aguarde(1000)
+		escreva("       /\\         /\\                    .           /\\ \n")
+		escreva("      /  \\       /  \\                   |@>        /  \\ \n")
+		escreva("     /    \\     / .  \\                  |         /    \\ \n")
+		escreva("    /      \\   /  |@> \\       /\\       / \\       /      \\ \n")
+		escreva("   /     /\\ \\ /   |    \\     /  \\     /   \\     /        \\ \n")
+		escreva("  /     /  \\ /  _ | _   \\   /    \\    | O |    /          _   _   _\n")
+		escreva(" /     /    \\  |_|_|_|   \\ /      \\   |___|   /          | |_| |_| |\n")
+		escreva("/     /      \\  | O |     /        \\  | |_|  /      /\\   |         |\n")
+		escreva("    _   _   _ \\ |___|    /          \\ |__|| /      /  \\  |  O   O  |\n")
+		escreva("   | |_| |_| |  | |_|   /             | |_|       /    \\ |   __ _  |\n")
+		escreva("   |         |  |__||  /              |_| |      /       |     |   |\n")
+		escreva("   | O  O  O |  | |_| /               |__ |     /        | O  O  O |\n")
+		escreva("   |  _      |  _   _   _        ______   |   _   _   _  |  _      |\n")
+		escreva("   | |__|_ | |_| |_| |_| |______|      |_____| |_| |_| |_| |__|_ |_|\n")
+		escreva("   |  |   _| |        _  |  | _|  ____     _||        _  |  |    | |\n")
+		escreva("   |   _| _  ||_|   _|_  | _|_   |||||| |_| _||_|   _|_  |   _| _| |\n")
+		escreva("   |  __|  |_|  |_       | | |__ |++++|   |_||  |_      ||  __|  |_|\n")
+		escreva("   |_________|___________|-------------------|___________|_________|\n")
+		escreva("                                 /_/_/ \n")
+		escreva("                                /_/_/ \n\n")
+
+		u.aguarde(4000)
+		escreva(personagem, ": É gigante")
+		carregar()
+		u.aguarde(2000)
+		escreva("\nHenrica Murakami: Não se preocupe, apesar do tamanho, ele vive sozinho lá dentro.")
+		u.aguarde(3000)
+		escreva("\nHenrica Murakami: Antes de entrar, queria te dar isto.\n")
+		u.aguarde(3000)
+		
+		escreva("\n ~~~ NOVO ITEM ADICIONADO - Pendrive de Restauração ~~~ \n\n")
+		enter()
+		
+		u.aguarde(1000)
+		escreva(personagem,": Um pendrive? Isso recupera HP?")
+		u.aguarde(3000)
+		escreva("\nHenrica Murakami: Exatamente, mas é apenas 1. Use com sabedoria.")
+		u.aguarde(3000)
+		escreva("\nHenrica Murakami: Agora você precisa entrar, ",personagem,".\n")
+		u.aguarde(1000)
+		escreva("    [1] Ué você não vem junto???     [2] Claro, Bela Donzela, espere aqui em segurança.  \nDigite aqui: ")
+		leia(resposta)
+
+		enquanto(resposta != 1 e resposta != 2){
+			escreva("\nInforme uma opção válida: ")
+			leia(resposta)
+		}
+		se(resposta == 1){
+			escreva("\nHenrica Murakami: Não, eu sou uma dama, esse é o seu papel.")
+			u.aguarde(3000)
+		}
+		se(resposta == 2){
+			escreva("\nHenrica Murakami gostou disso.")
+			u.aguarde(3000)
+		}
+
+		limpa()
+		carregar()
+		limpa()
+		
+		escreva("Você entrou no castelo")
+		carregar()
+		u.aguarde(2000)
+		escreva("\nVocê avistou Jeffinho.")
+		u.aguarde(3000)
+		
+		limpa()
+		carregar()
+		limpa()
+		
+		escreva(personagem,": Você deve ser o Jeffinho, certo?")
+		u.aguarde(3000)
+		escreva("\nJeffinho: O próprio, prazer.")
+		u.aguarde(3000)
+		escreva("\n", personagem,": Bom, já sabe que não estou aqui para conversa, não é?")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Claro, e nem deveria. Você não conseguiria entender minha ambição.")
+		u.aguarde(5000)
+		escreva("\n", personagem,": Ambição? Impor um império de Javascript ao mundo é sua ambição?")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Você conhece apenas o lado ruim de minha criação. Deveria dar uma chance.")
+		u.aguarde(5000)
+		escreva("\n", personagem,": Agora é tarde demais para voltar atrás.")
+
+		combateJeffinho()
+		
+	}
+	funcao combateJeffinho()
+	{
+		
+	}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 21630; 
+ * @POSICAO-CURSOR = 409; 
+ * @DOBRAMENTO-CODIGO = [695];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
