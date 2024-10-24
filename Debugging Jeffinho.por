@@ -10,18 +10,19 @@ programa
 	real hp_vilao = 100.0
 	cadeia ataque = "nada"
 	cadeia ataque_perdido = "nada"
-	cadeia arma
+	cadeia arma = "Scratch Sword"
 	
 	funcao inicio()
 	{
-		//menu()
-		//contexto()
-		//selecao_personagem()
-		//contexto()
-		//combate_portugol()
-		//dialogo()
-		//academia()
+		menu()
+		contexto()
+		selecao_personagem()
+		contexto()
+		combate_portugol()
+		dialogo()
+		academia()
 		jeffinho()
+
 	}
 	funcao menu()
 	{
@@ -156,7 +157,9 @@ programa
 		limpa()
 
 		escreva("\n--Combate iniciado--")
-		enquanto(hp_vilao != 0.0){ sorteio_portugol = u.sorteia(0, 2)
+		enquanto(hp_vilao > 0.0){ 
+			sorteio_portugol = u.sorteia(0, 2)
+			
 			se(hp <= atk_portugol){
 				escreva("\nSua situação está crítica, ", personagem,". Então a Bela Donzela Japonesa profere um super golpe derrotando o programa.")
 				pare
@@ -213,17 +216,21 @@ programa
 	}
 	funcao dialogo()
 	{
+		inteiro contagem = 0, contagem2 = 0
 		inteiro pergunta = 0
 		cadeia nome_dela = "Bela Donzela Japonesa"
 		escreva("\nPortugol: Não acredito que suas técnicas baratas me derrotaram, NÃOOO!!!\n")
 		enter()
 		limpa()
+		
 		escreva("Bela Donzela Japonesa: Ufa, Ainda bem que você apareceu, se não fosse por você eu poderia ter virado uma programadora de Portugol\n")
 		u.aguarde(3000)
 		escreva(personagem,": Não há de que, he he.\n")
 		u.aguarde(3000)
 		escreva("Bela Donzela Japonesa: Olha, talvez você esteja um pouco confuso e queira perguntar algo, bom, essa é a hora.\n")
 		enter()
+
+		
 		enquanto(pergunta != 3){
 			escreva("\n[1] Então, qual é o seu nome?\n")
 			escreva("[2] Onde estamos?\n")
@@ -232,6 +239,12 @@ programa
 			leia(pergunta)
 
 			se(pergunta == 2){
+				
+				enquanto(contagem2 > 0){
+				escreva("\n",nome_dela, ": Eu já te disse isso, não?")
+				pare
+				}
+				
 				escreva("\n",nome_dela,": Nós estamos no reino do Java Script...\n")
 				u.aguarde(3000)
 				escreva(personagem, ": Mas qual o motivo de toda essa destruição?\n")
@@ -239,17 +252,26 @@ programa
 				escreva(nome_dela, ": O motivo?.. Ele se chama Jefferson De Oliveira Chaves.. Mais conhecido como Jeffinho dos compiuter.\n") u.aguarde(3000)
 				escreva("Ele era um dos melhores professores de programação, ensinava seus alunos bem.. até que o java script o corrompeu!\n") u.aguarde(3000)
 				escreva("Ele está tentando dominar o mundo inteiro para fazer todos programarem em java, já pensou o horror?\n") u.aguarde(4000)
+
+				contagem2++
 			}
 			senao se(pergunta == 1){
+				
+				enquanto(contagem > 0){
+				escreva("\n",nome_dela, ": Eu já te disse isso, não?")
+				pare
+				}
+				
 				escreva("\n",nome_dela, ": Eu me chamo Henrica Murakami, eu era apenas uma feliz programadora de Scratch, até o reinado de Jeffinho começar...\n")
 				nome_dela = "Henrica Murakami"
 				u.aguarde(3000)
-			}
-			se(pergunta <= 0 ou pergunta > 3) { escreva("\nEscolha uma opção válida.")
+
+				contagem++
 			}
 		}
 		limpa()
 		u.aguarde(1000)
+		
 		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(3000)
 		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") u.aguarde(3000)
 		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani e Serjão dos Foguetes.") u.aguarde(3000)
@@ -547,7 +569,7 @@ programa
 		u.aguarde(2000)
 		escreva("\nRenato: Isso é uma relíquia, jovem. Dos bons tempos de Scrath nessa terra.")
 		u.aguarde(4000)
-		escreva("\nRenato: Você poderá usá-lo 3 vezes durante a batalha, o dano de ataque adversário será menor.")
+		escreva("\nRenato: Você poderá usá-lo 1 vez durante a batalha, quando usar, não receberá o próximo ataque do adversário.")
 		u.aguarde(4000)
 		escreva("\nRenato: Isso é tudo. Agora resta apenas desejar boa sorte em sua missão. Desça a mão nele!\n")
 		enter()
@@ -688,7 +710,7 @@ programa
 		u.aguarde(3000)
 		escreva("\nSerjão: Isso é uma relíquia, jovem. Dos bons tempos de Scrath nessa terra.")
 		u.aguarde(4000)
-		escreva("\nSerjão: Você poderá usá-la 3 vezes durante a batalha, seu dano será maior.")
+		escreva("\nSerjão: Você poderá usá-la 1 vez durante a batalha, quando usar, seu dano será maior.")
 		u.aguarde(4000)
 		escreva("\nSerjão: Isso é tudo. Agora resta apenas desejar boa sorte em sua missão. Vá e derrote Jeffinho, jovem.\n")
 		enter()
@@ -753,7 +775,7 @@ programa
 		u.aguarde(1000)
 		escreva(personagem,": Um pendrive? Isso recupera HP?")
 		u.aguarde(3000)
-		escreva("\nHenrica Murakami: Exatamente, mas é apenas 1. Use com sabedoria.")
+		escreva("\nHenrica Murakami: Exatamente, mas são apenas 3. Use com sabedoria.")
 		u.aguarde(3000)
 		escreva("\nHenrica Murakami: Agora você precisa entrar, ",personagem,".\n")
 		u.aguarde(1000)
@@ -800,22 +822,431 @@ programa
 		escreva("\nJeffinho: Você conhece apenas o lado ruim de minha criação. Deveria dar uma chance.")
 		u.aguarde(5000)
 		escreva("\n", personagem,": Agora é tarde demais para voltar atrás.")
+		u.aguarde(3000)
 
 		combateJeffinho()
 		
 	}
 	funcao combateJeffinho()
 	{
+		inteiro resposta
+		inteiro respostajeff
+		real atkJeffinho = 30.0
+		hp_vilao = 300.0 
+
+		limpa()
+
+		escreva("~~~ COMBATE INICIADO ~~~")
+		enquanto(hp_vilao > 0.0){
+
+			se(hp == 0){
+				limpa()
+				carregar()
+				limpa()
+				escreva("Jeffinho: Você não tinha chances, mas teve escolhas, garoto.")
+				finalmorte()
+			}
+			
+			se(hp <= 80){
+				escreva("\nJeffinho: Parece que a situação não está favorável para você, ", personagem,".")
+				u.aguarde(4000)
+				escreva("\nJeffinho: Vou te dar uma última chance.")
+				escreva("\nJeffinho:     [1] Junte-se a mim    [2] Continuar lutando  \nDigite aqui: ")
+				leia(respostajeff)
+
+				se(respostajeff == 1){
+					u.aguarde(1000)
+					escreva("\n\nJeffinho: Sábia escolha")
+					u.aguarde(2000)
+					carregar()
+					escreva("\n\n ~~~ COMBATE FINALIZADO ~~~ ")
+					u.aguarde(3000)
+					
+					finalJuntar()
+				}
+				se(respostajeff == 2){
+					escreva("\n\nJeffinho: Lamento sua burrice.")
+					u.aguarde(2000)
+				}
+			}
+			
+			escreva("\n\nO que deseja fazer, ",personagem,"?")
+			escreva("\n[1] Ataque normal")
+			escreva("\n[2] Arriscar dano crítico")
+			escreva("\n[3] Usar ", arma)
+			escreva("\n[4] Pendrives de Restauração\nDigite aqui: ")
+			leia(resposta)
+			
+			se(resposta == 1){
+				ataquenormal()
+				se(hp_vilao <= 0){
+					
+				} senao{
+					jeffinhoAtaque(atkJeffinho)
+				}
+			}
+			senao se(resposta == 2){
+				danocritico()
+				jeffinhoAtaque(atkJeffinho)
+			}
+			senao se(resposta == 3){
+				arma_player()
+				
+				se(arma == "Scratch Shield"){
+					escreva("\nGraças ao seu escudo, Jeffinho não pode atingi-lo durante esta rodada.")
+					enter()
+				}
+				se(arma == "Scratch Sword"){
+					jeffinhoAtaque(atkJeffinho)
+				}
+			}
+			senao se(resposta == 4){
+				pendrives()
+				jeffinhoAtaque(atkJeffinho)
+			}
+			senao{
+				escreva("Essa opção não é válida")
+			}
+		}
+		limpa()
+		carregar()
+		limpa()
+		
+		finalbom()
+	}
+	funcao ataquenormal()
+	{
+		inteiro sorteado
+
+		sorteado = u.sorteia(0, 10)
+
+		se(sorteado >= 3){
+			hp_vilao = hp_vilao - atk
+			escreva(ataque)
+
+			se(hp_vilao <= 0){
+				escreva("\nA vida do oponente está em 0.0HP\n")
+				enter()
+			}
+			se(hp_vilao > 0){
+				escreva("\nA vida do oponente está em ", hp_vilao,"HP\n")
+				enter()
+			}
+		}
+		senao{
+			escreva("\nVish, você errou seu ataque.")
+		}
+	}
+	funcao jeffinhoAtaque(real atkJeffinho)
+	{
+		inteiro sorteado
+		inteiro sorteadoFala
+
+		sorteado = u.sorteia(0, 10)
+		sorteadoFala = u.sorteia(0, 4)
+
+		cadeia jeffinhoFalas[5] = {"Jeffinho: O seu tempo acabou, setTimeout!", "Jeffinho: Vou te colocar em um loop infinito de dor!",
+		"Jeffinho: Ainda está de pé? Hora de zerar sua variável HP!", "Jeffinho: Sinta o poder do Javascript, ERRO 404 – Você já era!",
+		"Jeffinho: Normalmnente escrevem Hello World, mas para você será Bye Bye World"} 
+		
+		se(sorteado >= 0 e sorteado < 5)
+		{
+			hp = hp - atkJeffinho
+			u.aguarde(1000)
+			escreva("\n\nJeffinho: É tudo o que você tem?\n")
+			u.aguarde(2000)
+			escreva(jeffinhoFalas[sorteadoFala])
+			escreva("\nSua vida agora está em ", hp, "HP\n")
+			enter()
+		} 
+		senao se(sorteado >= 5 e sorteado < 8)
+		{
+			hp = hp - atkJeffinho*2
+			u.aguarde(1000)
+			escreva("\n\nJeffinho: Prepare-se")
+			carregar()
+			escreva("\nJeffinho acertou um ataque crítico! Sua vida agora está em ", hp, "HP\n")
+			enter()
+		}
+		senao{
+			escreva("\nJeffinho errou seu ataque, que sorte hein?\n")
+			enter()
+		}
+	}
+	funcao arma_player()
+	{
+		inteiro max_uso = 1
+		
+		enquanto(max_uso < 1){
+			escreva("\nVocê já usou o seu equipamento uma vez.")
+		}
+		se(arma == "Scratch Sword" e max_uso == 1){
+			escreva("\nVocê escolheu usar sua Scratch Sword\n")
+			hp_vilao = hp_vilao - atk*2
+			escreva(personagem,": Sinta o poder da espada da programação em blocos")
+			escreva("\nA vida de Jeffinho está em ", hp_vilao,"HP\n")
+			enter()
+
+			max_uso--
+		}
+		se(arma == "Scratch Shield" e max_uso == 1){
+			escreva("\nVocê escolheu usar seu Scratch Shield\n")
+			u.aguarde(2000)
+
+			max_uso--
+		}
+	}
+	funcao pendrives()
+	{
+		inteiro pendriv = 3
+
+		se(pendriv <= 0){
+			escreva("\nNão há mais pendrives de restauração para usar")
+		}
+		senao{
+			escreva("\nVocê injeta, não pergunte como, um de seus pendrives de restauração.")
+			hp = hp + 30
+			pendriv--
+			u.aguarde(2000)
+			escreva("\nSua vida agora está em ", hp, "HP\n")
+			u.aguarde(2000)
+			escreva("Você ainda possui ", pendriv," pendrives de restauração.")
+		}
+	}
+	funcao finalJuntar()
+	{
+		inteiro resposta
+		
+		limpa()
+		u.aguarde(1000)
+		escreva(personagem, ": Tudo bem, eu aceito.")
+		u.aguarde(5000)
+		escreva("\nJeffinho: quando se está perto de morrer a escolha é óbvia, não é?\n")
+		u.aguarde(5000)
+		escreva(personagem, ": Vamos, me diga. O que você quer de mim?")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Na verdade não é bem você")
+		carregar()
+		escreva(" Eu queria uma chance com a Bela Donzela Japonesa lá fora.")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Consegue arranjar para mim?\n")
+		u.aguarde(5000)
+		escreva(personagem,": Tire os olhos, eu vi primeiro.")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Ainda posso te derrotar, sabia?\n")
+		u.aguarde(5000)
+		escreva(personagem,": Tá legal, vou lá fora falar com ela.\n")
+		enter()
+
+		limpa()
+		carregar()
+		limpa()
+
+		escreva("Você chega à presença de Henrica Murakami")
+		carregar()
+		escreva("\n",personagem,": Olá Henrica")
+		u.aguarde(5000)
+		escreva("\nHenrica Murakami: Olá, estava te esperando, como foi lá?")
+		u.aguarde(5000)
+		escreva("\n",personagem,": Não sei nem explicar.")
+		u.aguarde(5000)
+		escreva("\n",personagem,": Olha tem uma coisa que preciso te contar.")
+		u.aguarde(5000)
+		escreva("\nHenrica Murakami: Bom, digamos que eu também")
+		u.aguarde(3000)
+		escreva("    [1] Vá você primeiro    [2] Deixa eu começar   \nDigite aqui: ")
+		leia(resposta)
+
+		enquanto(resposta != 1 e resposta != 2){
+			escreva("Informe uma opção válida.")
+			leia(resposta)
+		}
+		
+		se(resposta == 1){
+			escreva("\n\nHenrica Murakami: A verdade é que")
+			carregar()
+			escreva("\nHenrica Murakami: Eu não sou uma mulher.")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami tira sua peruca, revelando sua verdadeira face")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Mas... Por que se fingiu de mulher este tempo todo??")
+			u.aguarde(5000)
+			escreva("\n???: Eu precisava que você derrotasse Jeffinho")
+			carregar()
+			escreva("\n???: Achei que seria mais fácil te convencer assim.")
+			u.aguarde(5000)
+			escreva("\n???: Mas no fim deu certo, não é? Você derrotou Jeffinho.")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Eu acho que está na hora de voltar para meu mundo, adeus.")
+			u.aguarde(5000)
+			escreva("\n???: Mas e o que você ia me contar?")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Entre dentro do castelo e descubra")
+			enter()
+
+		}
+		se(resposta == 2){
+			escreva("\n", personagem,": O que acontece é o seguinte")
+			carregar()
+			escreva("\n", personagem,": o Jeffinho quer você.")
+			u.aguarde(5000)
+			escreva("\n", personagem,": Ele me mandou vir aqui te contar isso, em troca da minha vida.")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami: Puxa")
+			carregar()
+			escreva("Me sinto estranho agora.")
+			u.aguarde(5000)
+			escreva("\n", personagem,": Estranho? Não seria estranha?")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami: Aí que está")
+			carregar()
+			escreva(" Eu não sou uma mulher.")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami tira sua peruca, revelando sua verdadeira face")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Mas... Por que se fingiu de mulher este tempo todo??")
+			u.aguarde(5000)
+			escreva("\n???: Eu precisava que você derrotasse Jeffinho")
+			carregar()
+			escreva("\n???: Achei que seria mais fácil te convencer assim.")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Eu acho que está na hora de voltar para meu mundo, adeus.\n")
+			enter()
+			
+		}
+		limpa()
+		carregar()
+		limpa()
+
+		escreva(" ~~~ FINAL TRAUMÁTICO ~~~ ")
 		
 	}
+	funcao finalmorte()
+	{
+		limpa()
+		
+		escreva("\n ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗ ")
+		escreva("\n██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██║   ██║██╔════╝██╔══██╗")
+		escreva("\n██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║██║   ██║█████╗  ██████╔╝")
+		escreva("\n██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗")
+		escreva("\n╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗    ╚██████╔╝ ╚████╔╝ ███████╗██║  ██║")
+		escreva("\n ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝")
+                                                                          
+	}
+	funcao finalbom()
+	{
+		inteiro resposta
+		
+		escreva("Jeffinho está caído no chão, seus códigos e programas o abandonaram.")
+		u.aguarde(5000)
+		escreva("\n",personagem, ": Agora me diga, Jeffinho, sem o seu Javascript você é o que?")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Ha Ha Ha, não se convença tanto.")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Você pode me derrotar, mas depois de mim outros virão.")
+		u.aguarde(5000)
+		escreva("\n",personagem, ": Ainda posso te dar uma chance, se abandonar todo esse seu império.")
+		u.aguarde(5000)
+		escreva("\nJeffinho: Então é melhor que você acabe comigo mesmo.")
+		carregar()
+		escreva("\n",personagem, ": Você não me deixa escolha, hora do meu golpe final.")
+		u.aguarde(4000)
+		escreva(ataque)
+		u.aguarde(5000)
+
+		limpa()
+		carregar()
+		limpa()
+
+		escreva("Jeffinho está derrotado")
+		u.aguarde(5000)
+		escreva("\nVocê sai do castelo e vai ao encontro de Henrica Murakami")
+		u.aguarde(5000)
+		escreva("\nHenrica Murakami: Olá, ", personagem,". Eu estava te esperando. Como foi lá?")
+		u.aguarde(5000)
+		escreva("\n",personagem, ": Não há mais com o que se preocupar, ele está derrotado.")
+		u.aguarde(5000)
+		escreva("\nHenrica Murakami: O que, sério?? Muito obrigada você salvou nosso mundo!")
+		u.aguarde(5000)
+		escreva("\n",personagem, ": Bom, só fiz o que você me pediu, não é? He he.")
+		u.aguarde(5000)
+		escreva("\n",personagem, ": Inclusive")
+		carregar()
+		escreva(" Eu tenho uma coisa para te contar.")
+		u.aguarde(5000)
+		escreva("\nHenrica Murakami: Acho que eu também tenho.")
+
+		escreva("    [1] Vá você primeiro    [2] Deixa eu começar (Confessar sentimentos)   \nDigite aqui: ")
+		leia(resposta)
+
+		enquanto(resposta != 1 e resposta != 2){
+			escreva("Informe uma opção válida.")
+			leia(resposta)
+		}
+		se(resposta == 1){
+			escreva("\n\nHenrica Murakami: A verdade é que")
+			carregar()
+			escreva("\nHenrica Murakami: Eu não sou uma mulher.")
+			u.aguarde(5000)
+			escreva("\n\nHenrica Murakami tira sua peruca, revelando sua verdadeira face")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Mas... Por que se fingiu de mulher este tempo todo??")
+			u.aguarde(5000)
+			escreva("\n???: Eu precisava que você derrotasse Jeffinho")
+			carregar()
+			escreva("\n???: Achei que seria mais fácil te convencer assim.")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Eu acho que está na hora de voltar para meu mundo, adeus.")
+			u.aguarde(5000)
+			escreva("\n???: Mas e o que você ia me contar?")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Não existe mais.\n")
+			enter()
+		}
+		se(resposta == 2){
+			escreva("\n", personagem,": O que acontece é o seguinte")
+			carregar()
+			escreva("\n", personagem,": Eu acho que gosto muito de você.")
+			u.aguarde(5000)
+			escreva("\n", personagem,": Talvez pudessemos se conhcer melhor, o que acha?")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami: Puxa")
+			carregar()
+			escreva("Me sinto estranho agora.")
+			u.aguarde(5000)
+			escreva("\n", personagem,": Estranho? Não seria estranha?")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami: Aí que está")
+			carregar()
+			escreva(" Eu não sou uma mulher.")
+			u.aguarde(5000)
+			escreva("\nHenrica Murakami tira sua peruca, revelando sua verdadeira face")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Mas... Por que se fingiu de mulher este tempo todo??")
+			u.aguarde(5000)
+			escreva("\n???: Eu precisava que você derrotasse Jeffinho")
+			carregar()
+			escreva("\n???: Achei que seria mais fácil te convencer assim.")
+			u.aguarde(5000)
+			escreva("\n",personagem,": Eu acho que está na hora de voltar para meu mundo, adeus.\n")
+			enter()
+
+		}
+		limpa()
+		carregar()
+		limpa()
+
+		escreva(" ~~~ FINAL TRAUMÁTICO ~~~ ")
+	}
 }
+
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 409; 
- * @DOBRAMENTO-CODIGO = [695];
+ * @POSICAO-CURSOR = 4155; 
+ * @DOBRAMENTO-CODIGO = [717, 998, 1015, 1123, 1135];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
