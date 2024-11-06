@@ -10,7 +10,8 @@ programa
 	real hp_vilao = 100.0
 	cadeia ataque = "nada"
 	cadeia ataque_perdido = "nada"
-	cadeia arma = "Scratch Sword"
+	cadeia arma = "nada"
+	inteiro max_uso = 3
 	
 	funcao inicio()
 	{
@@ -81,7 +82,7 @@ programa
 		limpa()
 		escreva("\n---[ESCOLHA DE PERSONAGEM]---\n")
 		escreva("\nLuis Faminto        Guilherme do Truco      Gabriel Gremista")
-		escreva("\nHP: 200             HP: 120                 HP: 150")
+		escreva("\nHP: 180             HP: 120                 HP: 150")
 		escreva("\nATK: 15             ATK: 25                 ATK: 20\n")
 
 		escreva("\nEscolha com qual personagem deseja jogar, lembre-se essa escolha é permanente\nDigite aqui: ")
@@ -96,7 +97,7 @@ programa
 		}
 		se(personagem == "LUIS FAMINTO"){
 			escreva("A partir de agora seu nome é... Luis Faminto!\n")
-			hp = 200.0
+			hp = 180.0
 			atk = 15.0
 			ataque = "\nVocê arremessa uma coxinha de captury no oponente e acerta deixando ele na saudade!"
 			ataque_perdido = "\nVocê arremessa uma coxinha de captury no monstro e erra, desperdiçando todo o recheio!"
@@ -156,7 +157,7 @@ programa
 		enter()
 		limpa()
 
-		escreva("\n--Combate iniciado--")
+		escreva("--Combate iniciado--")
 		enquanto(hp_vilao > 0.0){ 
 			sorteio_portugol = u.sorteia(0, 2)
 			
@@ -172,6 +173,9 @@ programa
 				escreva(ataque)
 				escreva("\nA vida do oponente está em ", hp_vilao,"HP\n")
 				enter()
+				se(hp_vilao <= 0.0){
+					pare
+				}
 				hp = hp - atk_portugol
 				escreva("\nPortugol: Agora é a minha vez... ")
 				escreva(fala_portugol[sorteio_portugol])
@@ -180,6 +184,9 @@ programa
 			senao se(atacar == 2){
 				danocritico()
 				enter()
+				se(hp_vilao <= 0.0){
+					pare
+				}
 				escreva("\nPortugol: Agora é a minha vez... ")
 				hp = hp - atk_portugol
 				escreva(fala_portugol[sorteio_portugol])
@@ -224,7 +231,7 @@ programa
 		limpa()
 		
 		escreva("Bela Donzela Japonesa: Ufa, Ainda bem que você apareceu, se não fosse por você eu poderia ter virado uma programadora de Portugol\n")
-		u.aguarde(3000)
+		u.aguarde(5000)
 		escreva(personagem,": Não há de que, he he.\n")
 		u.aguarde(3000)
 		escreva("Bela Donzela Japonesa: Olha, talvez você esteja um pouco confuso e queira perguntar algo, bom, essa é a hora.\n")
@@ -246,12 +253,12 @@ programa
 				}
 				
 				escreva("\n",nome_dela,": Nós estamos no reino do Java Script...\n")
-				u.aguarde(3000)
+				u.aguarde(4000)
 				escreva(personagem, ": Mas qual o motivo de toda essa destruição?\n")
-				u.aguarde(3000)
-				escreva(nome_dela, ": O motivo?.. Ele se chama Jefferson De Oliveira Chaves.. Mais conhecido como Jeffinho dos compiuter.\n") u.aguarde(3000)
-				escreva("Ele era um dos melhores professores de programação, ensinava seus alunos bem.. até que o java script o corrompeu!\n") u.aguarde(3000)
-				escreva("Ele está tentando dominar o mundo inteiro para fazer todos programarem em java, já pensou o horror?\n") u.aguarde(4000)
+				u.aguarde(4000)
+				escreva(nome_dela, ": O motivo?.. Ele se chama Jefferson De Oliveira Chaves.. Mais conhecido como Jeffinho dos compiuter.\n") u.aguarde(4000)
+				escreva("Ele era um dos melhores professores de programação, ensinava seus alunos bem.. até que o java script o corrompeu!\n") u.aguarde(4000)
+				escreva("Ele está tentando dominar o mundo inteiro para fazer todos programarem em java, já pensou o horror?\n") u.aguarde(5000)
 
 				contagem2++
 			}
@@ -272,12 +279,13 @@ programa
 		limpa()
 		u.aguarde(1000)
 		
-		escreva("\n",nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(3000)
-		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") u.aguarde(3000)
-		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani e Serjão dos Foguetes.") u.aguarde(3000)
-		escreva("\nTalvez você devesse tentar chegar até lá antes de Jeffinho e se fortalecer!") u.aguarde(3000)
-		u.aguarde(3000)
+		escreva(nome_dela,": Escute, ", personagem,". Eu sei que é muita informação, mas você precisa nos ajudar.") u.aguarde(4000)
+		escreva("\nSe você está aqui deve ser o herói que as profecias apontavam!") u.aguarde(4000)
+		escreva("\nNosso reino precisa de você. No momento você deve ir à academia de Renato Cariani e Serjão dos Foguetes.") u.aguarde(4000)
+		escreva("\nTalvez você devesse tentar chegar até lá antes de Jeffinho e se fortalecer!")
+		u.aguarde(4000)
 		escreva("\n",personagem,": Tudo bem, farei o possível.\n")
+		u.aguarde(2000)
 		enter()
 	}
 	funcao academia()
@@ -569,7 +577,7 @@ programa
 		u.aguarde(2000)
 		escreva("\nRenato: Isso é uma relíquia, jovem. Dos bons tempos de Scrath nessa terra.")
 		u.aguarde(4000)
-		escreva("\nRenato: Você poderá usá-lo 1 vez durante a batalha, quando usar, não receberá o próximo ataque do adversário.")
+		escreva("\nRenato: Você poderá usá-lo 3 vezes durante a batalha, quando usar, não receberá o próximo ataque do adversário.")
 		u.aguarde(4000)
 		escreva("\nRenato: Isso é tudo. Agora resta apenas desejar boa sorte em sua missão. Desça a mão nele!\n")
 		enter()
@@ -679,7 +687,7 @@ programa
 		}
 		se(acertos == 6){
 			atk = atk + 30
-			escreva("\nSerjão: Uau, jovem. Você maximizou seu treinamento, seu atauque subiu +30 pontos")
+			escreva("Serjão: Uau, jovem. Você maximizou seu treinamento, seu atauque subiu +30 pontos\n")
 			enter()
 		}
 		u.aguarde(1000)
@@ -710,7 +718,7 @@ programa
 		u.aguarde(3000)
 		escreva("\nSerjão: Isso é uma relíquia, jovem. Dos bons tempos de Scrath nessa terra.")
 		u.aguarde(4000)
-		escreva("\nSerjão: Você poderá usá-la 1 vez durante a batalha, quando usar, seu dano será maior.")
+		escreva("\nSerjão: Você poderá usá-la 3 vezes durante a batalha, quando usar, seu dano será maior.")
 		u.aguarde(4000)
 		escreva("\nSerjão: Isso é tudo. Agora resta apenas desejar boa sorte em sua missão. Vá e derrote Jeffinho, jovem.\n")
 		enter()
@@ -778,7 +786,7 @@ programa
 		escreva("\nHenrica Murakami: Exatamente, mas são apenas 3. Use com sabedoria.")
 		u.aguarde(3000)
 		escreva("\nHenrica Murakami: Agora você precisa entrar, ",personagem,".\n")
-		u.aguarde(1000)
+		u.aguarde(2000)
 		escreva("    [1] Ué você não vem junto???     [2] Claro, Bela Donzela, espere aqui em segurança.  \nDigite aqui: ")
 		leia(resposta)
 
@@ -787,14 +795,15 @@ programa
 			leia(resposta)
 		}
 		se(resposta == 1){
-			escreva("\nHenrica Murakami: Não, eu sou uma dama, esse é o seu papel.")
+			escreva("\nHenrica Murakami: Não, eu sou uma dama, esse é o seu papel.\n")
 			u.aguarde(3000)
 		}
 		se(resposta == 2){
-			escreva("\nHenrica Murakami gostou disso.")
+			escreva("\nHenrica Murakami gostou disso.\n")
 			u.aguarde(3000)
 		}
 
+		enter()
 		limpa()
 		carregar()
 		limpa()
@@ -863,6 +872,7 @@ programa
 					u.aguarde(3000)
 					
 					finalJuntar()
+					pare
 				}
 				se(respostajeff == 2){
 					escreva("\n\nJeffinho: Lamento sua burrice.")
@@ -893,8 +903,9 @@ programa
 				arma_player()
 				
 				se(arma == "Scratch Shield"){
-					escreva("\nGraças ao seu escudo, Jeffinho não pode atingi-lo durante esta rodada.")
+					escreva("\nGraças ao seu escudo, Jeffinho não pode atingi-lo durante esta rodada.\n")
 					enter()
+					ataquenormal()
 				}
 				se(arma == "Scratch Sword"){
 					jeffinhoAtaque(atkJeffinho)
@@ -912,7 +923,9 @@ programa
 		carregar()
 		limpa()
 		
-		finalbom()
+		se(hp_vilao <= 0.0){
+			finalbom()
+		}
 	}
 	funcao ataquenormal()
 	{
@@ -975,21 +988,22 @@ programa
 	}
 	funcao arma_player()
 	{
-		inteiro max_uso = 1
+		enquanto(max_uso <= 0){
+			escreva("\nVocê já usou seu equipamento 3 vezes.")
+			pare
+			}
 		
-		enquanto(max_uso < 1){
-			escreva("\nVocê já usou o seu equipamento uma vez.")
-		}
-		se(arma == "Scratch Sword" e max_uso == 1){
+		se(arma == "Scratch Sword" e max_uso > 0){
 			escreva("\nVocê escolheu usar sua Scratch Sword\n")
 			hp_vilao = hp_vilao - atk*2
 			escreva(personagem,": Sinta o poder da espada da programação em blocos")
+			u.aguarde(3000)
 			escreva("\nA vida de Jeffinho está em ", hp_vilao,"HP\n")
 			enter()
 
 			max_uso--
 		}
-		se(arma == "Scratch Shield" e max_uso == 1){
+		se(arma == "Scratch Shield" e max_uso > 0){
 			escreva("\nVocê escolheu usar seu Scratch Shield\n")
 			u.aguarde(2000)
 
@@ -1245,8 +1259,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 4155; 
- * @DOBRAMENTO-CODIGO = [717, 998, 1015, 1123, 1135];
+ * @POSICAO-CURSOR = 278; 
+ * @DOBRAMENTO-CODIGO = [725, 952, 1137, 1149];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
