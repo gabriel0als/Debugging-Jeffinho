@@ -223,6 +223,16 @@ programa
 	}
 	funcao dialogo()
 	{
+		se(personagem == "LUIS FAMINTO"){
+			hp = 180.0
+		}
+		se(personagem == "GUILHERME DO TRUCO"){
+			hp = 120.0
+		}
+		se(personagem == "GABRIEL GREMISTA"){
+			hp = 150.0
+		}
+		
 		inteiro contagem = 0, contagem2 = 0
 		inteiro pergunta = 0
 		cadeia nome_dela = "Bela Donzela Japonesa"
@@ -1259,8 +1269,8 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 278; 
- * @DOBRAMENTO-CODIGO = [725, 952, 1137, 1149];
+ * @POSICAO-CURSOR = 7475; 
+ * @DOBRAMENTO-CODIGO = [735, 962, 1147, 1159];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
